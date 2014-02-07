@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>tArray</key>
+	<array>
+		<dict>
+			<key>description</key>
+			<string>蓓蕾</string>
+			<key>type</key>
+			<integer>1</integer>
+			<key>answers</key>
+			<array>
+				<string>péi lěi  </string>
+				<string>péi léi  </string>
+				<string>bèi lěi  </string>
+				<string>bèi léi</string>
+			</array>
+			<key>right_answer</key>
+			<integer>2</integer>
+		</dict>
+	</array>
+</dict>
+</plist>
