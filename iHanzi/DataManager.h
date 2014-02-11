@@ -31,10 +31,12 @@ enum Question_Type {
 @property (assign, nonatomic) int stars;
 @property (assign, nonatomic) int quesIdx;
 @property (assign, nonatomic) int blockIdx;
+@property (assign, nonatomic) int unlockIdx;
+
 +(id)sharedInstance;
 -(void)loadData;
--(void)answerQuestion:(NSUInteger)qIdx Right:(BOOL)right;
--(BOOL)getAnswerAtIndex:(NSUInteger)qIdx;
+-(void)answerQuestion:(NSUInteger)qIdx Result:(int)result;
+-(int)getAnswerAtIndex:(NSUInteger)qIdx;
 -(Question*)getQuestionAtIndex:(NSUInteger)qIdx;
 -(void)answerRight;
 @end

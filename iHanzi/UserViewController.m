@@ -81,10 +81,10 @@
 {
     [super viewWillAppear:animated];
 }
-
+  
 -(void)btnClicked:(id)sender
 {
-    GameSelectViewController *controller = [[GameSelectViewController alloc] initWithStyle:UITableViewStylePlain];
+    GameSelectViewController *controller = [[GameSelectViewController alloc] init];
     [self.navigationController pushViewController:controller animated:YES];
     [controller release];
 }
@@ -101,7 +101,7 @@
     [super dealloc];
 }
 - (IBAction)startGame:(id)sender {
-    GameSelectViewController *controller = [[GameSelectViewController alloc] initWithStyle:UITableViewStylePlain];
+    GameSelectViewController *controller = [[GameSelectViewController alloc] init];
     [self.navigationController pushViewController:controller animated:YES];
     [controller release];
 }

@@ -7,7 +7,7 @@
 //
 
 #import "DataManager.h"
-#define TOTAL_NUM 500
+#define TOTAL_NUM 300
 
 @implementation Question
 
@@ -35,7 +35,7 @@ static DataManager* instance=nil;
         questions = [[NSMutableArray alloc] initWithCapacity:TOTAL_NUM];
         
         for (int i=0; i<TOTAL_NUM; ++i) {
-            [answers addObject:[NSNumber numberWithBool:NO]];
+            [answers addObject:[NSNumber numberWithInt:0]];
         }
         
         [self loadData];
@@ -62,16 +62,16 @@ static DataManager* instance=nil;
     }
 }
 
--(void)answerQuestion:(NSUInteger)qIdx Right:(BOOL)right
+-(void)answerQuestion:(NSUInteger)qIdx Result:(int)result
 {
-    if (qIdx<500) {
-        [answers replaceObjectAtIndex:qIdx withObject:[NSNumber numberWithBool:right]];
+    if (qIdx<TOTAL_NUM) {
+        [answers replaceObjectAtIndex:qIdx withObject:[NSNumber numberWithInt:result]];
     }
 }
 
--(BOOL)getAnswerAtIndex:(NSUInteger)qIdx
+-(int)getAnswerAtIndex:(NSUInteger)qIdx
 {
-    return [[answers objectAtIndex:qIdx] boolValue];
+    return [[answers objectAtIndex:qIdx] intValue];
 }
 
 -(Question*)getQuestionAtIndex:(NSUInteger)qIdx

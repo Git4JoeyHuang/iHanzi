@@ -39,6 +39,11 @@
     return self;
 }
 
+- (void)addButton:(UIButton *)button
+{
+    [buttonArray addObject:button];
+}
+
 - (void) show {
     [super show];
     CGSize imageSize = self.backgroundImage.size;

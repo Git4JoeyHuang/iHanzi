@@ -10,6 +10,6 @@
 
 @protocol GameSelectDelegate;
 
-@interface GameSelectViewController : UITableViewController<GameSelectDelegate>
+@interface GameSelectViewController : UIViewController<GameSelectDelegate,UITableViewDataSource,UITableViewDelegate>
 
 @end

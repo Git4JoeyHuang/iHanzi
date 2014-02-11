@@ -8,6 +8,8 @@
 
 #import "AppDelegate.h"
 #import "HomeTabBarController.h"
+
+
 @implementation AppDelegate
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
@@ -21,10 +23,18 @@
     HomeTabBarController *home = [[HomeTabBarController alloc] initWithNibName:@"HomeTabBarController" bundle:nil];
     
     UINavigationController *nav = [[UINavigationController alloc] initWithRootViewController:home];
+    //[nav.navigationBar setBackgroundColor:[UIColor colorWithPatternImage:[UIImage imageNamed:@"title.png"]]];
+
     self.navigator = nav;
     [nav release];
     //nav.navigationBarHidden = YES;
+    /*
+     自定义UINavigationBar (要对应不同ios)
+     */
+    [[UINavigationBar appearance] setBackgroundImage:[UIImage imageNamed:@"title.png"] forBarMetrics:UIBarMetricsDefault];
     
+    [[UINavigationBar appearance] setShadowImage:[UIImage new]];
+
     [self.window setRootViewController:nav];
     
     

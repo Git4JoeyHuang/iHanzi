@@ -16,19 +16,38 @@
 #define NUM_QUESTION 5
 #define NUM_CHOICE 2
 
+#define total_blocks 100
+#define blocks_per_page 12
+#define total_pages 9
+#define rows_per_page 4
+
 @interface GameSelectViewController ()
+{
+    UIScrollView *scrollView;
+    UIPageControl *pageIndicator;
+}
 
 @end
 
 @implementation GameSelectViewController
 
-- (id)initWithStyle:(UITableViewStyle)style
+- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
-    self = [super initWithStyle:style];
+    self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
         // Custom initialization
     }
     return self;
+}
+
+
+-(void)viewWillAppear:(BOOL)animated
+{
+    for (UIView* tableview in scrollView.subviews) {
+        if ([tableview isKindOfClass:[UITableView class]]) {
+            [(UITableView*)tableview reloadData];
+        }
+    }
 }
 
 - (void)viewDidLoad
@@ -42,6 +61,86 @@
     // self.navigationItem.rightBarButtonItem = self.editButtonItem;
     
     self.title = @"选关";
+    
+    self.automaticallyAdjustsScrollViewInsets = NO;
+    
+    //add subview scrollview
+    scrollView = [[UIScrollView alloc] initWithFrame:CGRectMake(0, self.navigationController.navigationBar.bounds.size.height+20 , 320, 380)];
+    [scrollView setPagingEnabled:YES];
+    [scrollView setBackgroundColor:[UIColor clearColor]];
+    [self.view addSubview:scrollView];
+    
+    /*
+     每页18关
+     一共100关
+     所以
+     #define total_blocks 100
+     #define blocks_per_page 12
+     #define total_pages 9
+     */
+    
+    for (int i=0; i<total_pages; ++i) {
+        UITableView *tableview = [[UITableView alloc] initWithFrame:CGRectZero];
+        tableview.delegate = self;
+        tableview.dataSource = self;
+        tableview.tag = i;
+        tableview.scrollEnabled = NO;
+        
+        tableview.separatorStyle = UITableViewCellSeparatorStyleNone;
+        tableview.allowsSelection = NO;
+        
+        tableview.backgroundColor = [UIColor clearColor];
+        tableview.backgroundView = nil;
+        
+        CGRect frame = scrollView.bounds;
+        frame.origin.x += i*frame.size.width;
+        tableview.frame = frame;
+        
+        [scrollView addSubview:tableview];
+        
+        [tableview release];
+    }
+    
+    [scrollView setContentSize:CGSizeMake(scrollView.bounds.size.width*total_pages, scrollView.bounds.size.height)];
+    [scrollView setContentOffset:CGPointZero];
+    
+    UIButton *backButton = [UIButton buttonWithType:UIButtonTypeCustom];
+    
+    backButton.frame = CGRectMake(0.0, 0.0, 26.0, 23.0);
+    
+    [backButton setImage:[UIImage imageNamed:@"arrow_left.png"] forState:UIControlStateNormal];
+    
+    [backButton setImage:[UIImage imageNamed:@"arrow_left.png"] forState:UIControlStateSelected];
+    
+    [backButton addTarget:self action:@selector(backAction) forControlEvents:UIControlEventTouchUpInside];
+    
+    UIBarButtonItem *temporaryBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:backButton];
+    
+    temporaryBarButtonItem.style = UIBarButtonItemStylePlain;
+
+    self.navigationItem.leftBarButtonItem = temporaryBarButtonItem;
+    
+    [temporaryBarButtonItem release];
+    
+    //set Background image
+//    self.view.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"bg2.png"]];
+    
+    //UIImageView *bgView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"bg2.jpg"]];
+    //[bgView setImage:[UIImage imageNamed:@"bg2.jpg"]];
+    //[bgView setFrame:self.view.bounds];
+    self.view.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"bg2.jpg"]];
+
+}
+
+//-(void)blockSelected:(UIGestureRecognizer*)tap
+//{
+//    GameSelectingButton* btn = (GameSelectingButton*)tap.view;
+//    
+//}
+
+-(void)backAction
+{
+    [self.navigationController popViewControllerAnimated:YES];
 }
 
 - (void)didReceiveMemoryWarning
@@ -54,20 +153,23 @@
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
-#warning Potentially incomplete method implementation.
     // Return the number of sections.
     return 1;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-#warning Incomplete method implementation.
     // Return the number of rows in the section.
-    return NUM_BLOCKS/NUM_BLOCK_PER_LINE+1;
+    if (tableView.tag==total_pages-1) {
+        return 2;
+    }
+    return rows_per_page;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
+    int pageIndex = tableView.tag;
+    
     static NSString *CellIdentifier = @"Cell";
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
     
@@ -78,16 +180,18 @@
     
     CustomGameSelectCell *customCell = (CustomGameSelectCell*)cell;
     
-    [customCell setRowIndex:indexPath.row];
+//    [customCell.btn1 addGestureRecognizer:[[[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(blockSelected:)] autorelease] ];
+//    [customCell.btn2 addGestureRecognizer:[[[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(blockSelected:)] autorelease] ];
+//    [customCell.btn3 addGestureRecognizer:[[[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(blockSelected:)] autorelease] ];
+    
+    [customCell setRowIndex: pageIndex*rows_per_page + indexPath.row];
+    [customCell setTableviewIndex:tableView.tag];
     
     [customCell setDelegate:self];
     
-    if (indexPath.row == NUM_BLOCKS/NUM_BLOCK_PER_LINE) {
+    if (tableView.tag==total_pages-1 && indexPath.row == 1) {
         [customCell.btn2 setHidden:YES];
         [customCell.btn3 setHidden:YES];
-    }else {
-        [customCell.btn2 setHidden:NO];
-        [customCell.btn3 setHidden:NO];
     }
     
 //    NSLog(@"cell btn1 %@",customCell.btn1.titleLabel.text);
@@ -100,6 +204,11 @@
     return cell;
 }
 
+#pragma mark UITableViewDelegate
+-(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    return 95;
+}
 
 #pragma mark GameSelectDelegate
 - (void)didSelected:(NSUInteger)tag AtRow:(NSUInteger)row
@@ -107,62 +216,29 @@
     [[DataManager sharedInstance] setBlockIdx:3*row+tag];//设置第几关
     [[DataManager sharedInstance] setQuesIdx:0];
     
-    GamePlayingViewController *controller = [[GamePlayingViewController alloc] initWithNibName:@"GamePlayingViewController" bundle:nil];
+    GamePlayingViewController *controller = [[GamePlayingViewController alloc] initWithBlockIndex:3*row+tag];
     
     [self.navigationController pushViewController:controller animated:YES];
     
     [controller release];
 }
 
-/*
-// Override to support conditional editing of the table view.
-- (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath
+-(void)didSelected:(NSUInteger)tag AtRow:(NSUInteger)row InTableView:(NSUInteger)table
 {
-    // Return NO if you do not want the specified item to be editable.
-    return YES;
-}
-*/
-
-/*
-// Override to support editing the table view.
-- (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    if (editingStyle == UITableViewCellEditingStyleDelete) {
-        // Delete the row from the data source
-        [tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationFade];
-    }   
-    else if (editingStyle == UITableViewCellEditingStyleInsert) {
-        // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
-    }   
-}
-*/
-
-/*
-// Override to support rearranging the table view.
-- (void)tableView:(UITableView *)tableView moveRowAtIndexPath:(NSIndexPath *)fromIndexPath toIndexPath:(NSIndexPath *)toIndexPath
-{
-}
-*/
-
-/*
-// Override to support conditional rearranging of the table view.
-- (BOOL)tableView:(UITableView *)tableView canMoveRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    // Return NO if you do not want the item to be re-orderable.
-    return YES;
-}
-*/
-
-/*
-#pragma mark - Navigation
-
-// In a story board-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
-{
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
+    [[DataManager sharedInstance] setBlockIdx: 3*row +tag];//设置第几关
+    [[DataManager sharedInstance] setQuesIdx:0];
+    
+    GamePlayingViewController *controller = [[GamePlayingViewController alloc] initWithBlockIndex:3*row+tag];
+    
+    [self.navigationController pushViewController:controller animated:YES];
+    
+    [controller release];
 }
 
- */
 
+- (void)dealloc {
+    [scrollView release];
+    [pageIndicator release];
+    [super dealloc];
+}
 @end
