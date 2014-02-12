@@ -8,6 +8,7 @@
 
 #import "CustomGameSelectCell.h"
 #import "DataManager.h"
+#define total_blocks 60
 
 @implementation CustomGameSelectCell
 
@@ -54,7 +55,7 @@
         int tag = btn.tag;
         int blockIdx = 3*rowIndex + tag;
         
-        if (blockIdx<100) {
+        if (blockIdx<total_blocks) {
             btn.index = blockIdx;
             if (blockIdx<=[[DataManager sharedInstance] unlockIdx]) {
                 btn.unclocked = YES;

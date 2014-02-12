@@ -16,10 +16,11 @@
 #define NUM_QUESTION 5
 #define NUM_CHOICE 2
 
-#define total_blocks 100
-#define blocks_per_page 12
-#define total_pages 9
-#define rows_per_page 4
+#define total_blocks 60
+#define blocks_per_page 15
+#define total_pages 4
+#define rows_per_page 5
+#define blocks_per_row 3
 
 @interface GameSelectViewController ()
 {
@@ -43,7 +44,7 @@
 
 -(void)viewWillAppear:(BOOL)animated
 {
-    for (UIView* tableview in scrollView.subviews) {
+    for (UIView* tableview in _scrollView.subviews) {
         if ([tableview isKindOfClass:[UITableView class]]) {
             [(UITableView*)tableview reloadData];
         }
@@ -65,10 +66,10 @@
     self.automaticallyAdjustsScrollViewInsets = NO;
     
     //add subview scrollview
-    scrollView = [[UIScrollView alloc] initWithFrame:CGRectMake(0, self.navigationController.navigationBar.bounds.size.height+20 , 320, 380)];
-    [scrollView setPagingEnabled:YES];
-    [scrollView setBackgroundColor:[UIColor clearColor]];
-    [self.view addSubview:scrollView];
+//    scrollView = [[UIScrollView alloc] initWithFrame:CGRectMake(0, self.navigationController.navigationBar.bounds.size.height+20 , 320, 360)];
+//    [scrollView setPagingEnabled:YES];
+//    [scrollView setBackgroundColor:[UIColor clearColor]];
+//    [self.view addSubview:scrollView];
     
     /*
      每页18关
@@ -78,6 +79,11 @@
      #define blocks_per_page 12
      #define total_pages 9
      */
+    
+    [_pageIndicator setBackgroundColor:[UIColor colorWithPatternImage:[UIImage imageNamed:@"all_leve.png"]]];
+    [_pageIndicator setImageNormal:[UIImage imageNamed:@"all_leve_unseled.png"]];
+    [_pageIndicator setImageHighlighted:[UIImage imageNamed:@"all_leve_seled.png"]];
+    [_pageIndicator setCurrentPage:0];
     
     for (int i=0; i<total_pages; ++i) {
         UITableView *tableview = [[UITableView alloc] initWithFrame:CGRectZero];
@@ -92,17 +98,17 @@
         tableview.backgroundColor = [UIColor clearColor];
         tableview.backgroundView = nil;
         
-        CGRect frame = scrollView.bounds;
+        CGRect frame = _scrollView.bounds;
         frame.origin.x += i*frame.size.width;
         tableview.frame = frame;
         
-        [scrollView addSubview:tableview];
+        [_scrollView addSubview:tableview];
         
         [tableview release];
     }
     
-    [scrollView setContentSize:CGSizeMake(scrollView.bounds.size.width*total_pages, scrollView.bounds.size.height)];
-    [scrollView setContentOffset:CGPointZero];
+    [_scrollView setContentSize:CGSizeMake(_scrollView.bounds.size.width*total_pages, _scrollView.bounds.size.height)];
+    [_scrollView setContentOffset:CGPointZero];
     
     UIButton *backButton = [UIButton buttonWithType:UIButtonTypeCustom];
     
@@ -160,9 +166,9 @@
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
     // Return the number of rows in the section.
-    if (tableView.tag==total_pages-1) {
-        return 2;
-    }
+//    if (tableView.tag==total_pages-1) {
+//        return 2;
+//    }
     return rows_per_page;
 }
 
@@ -189,10 +195,10 @@
     
     [customCell setDelegate:self];
     
-    if (tableView.tag==total_pages-1 && indexPath.row == 1) {
-        [customCell.btn2 setHidden:YES];
-        [customCell.btn3 setHidden:YES];
-    }
+//    if (tableView.tag==total_pages-1 && indexPath.row == total_blocks/blocks_per_row%rows_per_page) {
+//        [customCell.btn2 setHidden:YES];
+//        [customCell.btn3 setHidden:YES];
+//    }
     
 //    NSLog(@"cell btn1 %@",customCell.btn1.titleLabel.text);
 //    
@@ -207,7 +213,7 @@
 #pragma mark UITableViewDelegate
 -(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    return 95;
+    return 72;
 }
 
 #pragma mark GameSelectDelegate
@@ -237,8 +243,10 @@
 
 
 - (void)dealloc {
-    [scrollView release];
-    [pageIndicator release];
+//    [scrollView release];
+//    [pageIndicator release];
+    [_scrollView release];
+    [_pageIndicator release];
     [super dealloc];
 }
 @end

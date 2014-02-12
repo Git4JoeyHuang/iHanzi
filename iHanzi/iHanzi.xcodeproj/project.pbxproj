@@ -81,9 +81,6 @@
 		CF4239C918A8B5F0000A1637 /* cut@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = CF4239A618A8B5F0000A1637 /* cut@2x.png */; };
 		CF4239CA18A8B5F0000A1637 /* error@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = CF4239A718A8B5F0000A1637 /* error@2x.png */; };
 		CF4239CB18A8B5F0000A1637 /* fail@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = CF4239A818A8B5F0000A1637 /* fail@2x.png */; };
-		CF4239CD18A8B673000A1637 /* Default-568@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = CF4239CC18A8B673000A1637 /* Default-568@2x.png */; };
-		CF4239D018A8B786000A1637 /* Default@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = CF4239CE18A8B786000A1637 /* Default@2x.png */; };
-		CF4239D118A8B786000A1637 /* Default-Portrait@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = CF4239CF18A8B786000A1637 /* Default-Portrait@2x.png */; };
 		CF4239D718A8CFE6000A1637 /* GameSelectingButton.m in Sources */ = {isa = PBXBuildFile; fileRef = CF4239D618A8CFE6000A1637 /* GameSelectingButton.m */; };
 		CF4239D918A8D005000A1637 /* GameSelectingButton.xib in Resources */ = {isa = PBXBuildFile; fileRef = CF4239D818A8D005000A1637 /* GameSelectingButton.xib */; };
 		CF4239DE18A8F230000A1637 /* bg1@2x.jpg in Resources */ = {isa = PBXBuildFile; fileRef = CF4239DA18A8F230000A1637 /* bg1@2x.jpg */; };
@@ -138,6 +135,16 @@
 		CF423A9E18AA2D96000A1637 /* RollingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CF423A9C18AA2D96000A1637 /* RollingViewController.m */; };
 		CF423A9F18AA2D96000A1637 /* RollingViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = CF423A9D18AA2D96000A1637 /* RollingViewController.xib */; };
 		CF853DFD18AA450100AA4683 /* CustomIOS7AlertView.m in Sources */ = {isa = PBXBuildFile; fileRef = CF853DFC18AA450100AA4683 /* CustomIOS7AlertView.m */; };
+		CF853DFF18AB103A00AA4683 /* DialogForBlock.xib in Resources */ = {isa = PBXBuildFile; fileRef = CF853DFE18AB103A00AA4683 /* DialogForBlock.xib */; };
+		CF853E0218AB133C00AA4683 /* DialogForBlock.m in Sources */ = {isa = PBXBuildFile; fileRef = CF853E0118AB133C00AA4683 /* DialogForBlock.m */; };
+		CF853E0518AB58B900AA4683 /* DialogForLastBlock.m in Sources */ = {isa = PBXBuildFile; fileRef = CF853E0418AB58B900AA4683 /* DialogForLastBlock.m */; };
+		CF853E0718AB58ED00AA4683 /* DialogForLastBlock.xib in Resources */ = {isa = PBXBuildFile; fileRef = CF853E0618AB58ED00AA4683 /* DialogForLastBlock.xib */; };
+		CFCFE3DA18AB656A009C8EB9 /* AWActionSheet.m in Sources */ = {isa = PBXBuildFile; fileRef = CFCFE3D918AB656A009C8EB9 /* AWActionSheet.m */; };
+		CFCFE3E018AB69C3009C8EB9 /* libWeChatSDK.a in Frameworks */ = {isa = PBXBuildFile; fileRef = CFCFE3DD18AB69C3009C8EB9 /* libWeChatSDK.a */; };
+		CFCFE3E218AB8684009C8EB9 /* GameSelectViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = CFCFE3E118AB8684009C8EB9 /* GameSelectViewController.xib */; };
+		CFCFE3E618AB970D009C8EB9 /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = CFCFE3E318AB970D009C8EB9 /* Default-568h@2x.png */; };
+		CFCFE3E818AB970D009C8EB9 /* Default@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = CFCFE3E518AB970D009C8EB9 /* Default@2x.png */; };
+		CFCFE3EB18AB9CA0009C8EB9 /* CustomPageControl.m in Sources */ = {isa = PBXBuildFile; fileRef = CFCFE3EA18AB9CA0009C8EB9 /* CustomPageControl.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -242,9 +249,6 @@
 		CF4239A618A8B5F0000A1637 /* cut@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "cut@2x.png"; sourceTree = "<group>"; };
 		CF4239A718A8B5F0000A1637 /* error@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "error@2x.png"; sourceTree = "<group>"; };
 		CF4239A818A8B5F0000A1637 /* fail@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "fail@2x.png"; sourceTree = "<group>"; };
-		CF4239CC18A8B673000A1637 /* Default-568@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568@2x.png"; sourceTree = "<group>"; };
-		CF4239CE18A8B786000A1637 /* Default@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default@2x.png"; sourceTree = "<group>"; };
-		CF4239CF18A8B786000A1637 /* Default-Portrait@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-Portrait@2x.png"; sourceTree = "<group>"; };
 		CF4239D518A8CFE5000A1637 /* GameSelectingButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GameSelectingButton.h; sourceTree = "<group>"; };
 		CF4239D618A8CFE6000A1637 /* GameSelectingButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GameSelectingButton.m; sourceTree = "<group>"; };
 		CF4239D818A8D005000A1637 /* GameSelectingButton.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = GameSelectingButton.xib; sourceTree = "<group>"; };
@@ -303,6 +307,22 @@
 		CF423A9D18AA2D96000A1637 /* RollingViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = RollingViewController.xib; sourceTree = "<group>"; };
 		CF853DFB18AA450100AA4683 /* CustomIOS7AlertView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CustomIOS7AlertView.h; sourceTree = "<group>"; };
 		CF853DFC18AA450100AA4683 /* CustomIOS7AlertView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CustomIOS7AlertView.m; sourceTree = "<group>"; };
+		CF853DFE18AB103A00AA4683 /* DialogForBlock.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DialogForBlock.xib; sourceTree = "<group>"; };
+		CF853E0018AB133C00AA4683 /* DialogForBlock.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DialogForBlock.h; sourceTree = "<group>"; };
+		CF853E0118AB133C00AA4683 /* DialogForBlock.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DialogForBlock.m; sourceTree = "<group>"; };
+		CF853E0318AB58B900AA4683 /* DialogForLastBlock.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DialogForLastBlock.h; sourceTree = "<group>"; };
+		CF853E0418AB58B900AA4683 /* DialogForLastBlock.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DialogForLastBlock.m; sourceTree = "<group>"; };
+		CF853E0618AB58ED00AA4683 /* DialogForLastBlock.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DialogForLastBlock.xib; sourceTree = "<group>"; };
+		CFCFE3D818AB656A009C8EB9 /* AWActionSheet.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AWActionSheet.h; sourceTree = "<group>"; };
+		CFCFE3D918AB656A009C8EB9 /* AWActionSheet.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AWActionSheet.m; sourceTree = "<group>"; };
+		CFCFE3DD18AB69C3009C8EB9 /* libWeChatSDK.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libWeChatSDK.a; sourceTree = "<group>"; };
+		CFCFE3DE18AB69C3009C8EB9 /* WXApi.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WXApi.h; sourceTree = "<group>"; };
+		CFCFE3DF18AB69C3009C8EB9 /* WXApiObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WXApiObject.h; sourceTree = "<group>"; };
+		CFCFE3E118AB8684009C8EB9 /* GameSelectViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = GameSelectViewController.xib; sourceTree = "<group>"; };
+		CFCFE3E318AB970D009C8EB9 /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
+		CFCFE3E518AB970D009C8EB9 /* Default@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default@2x.png"; sourceTree = "<group>"; };
+		CFCFE3E918AB9CA0009C8EB9 /* CustomPageControl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CustomPageControl.h; sourceTree = "<group>"; };
+		CFCFE3EA18AB9CA0009C8EB9 /* CustomPageControl.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CustomPageControl.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -312,6 +332,7 @@
 			files = (
 				4A1B3F7F1897B45C00E36064 /* CoreGraphics.framework in Frameworks */,
 				4A1B3F811897B45C00E36064 /* UIKit.framework in Frameworks */,
+				CFCFE3E018AB69C3009C8EB9 /* libWeChatSDK.a in Frameworks */,
 				4A1B3F7D1897B45C00E36064 /* Foundation.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -332,6 +353,9 @@
 		4A1B3F701897B45B00E36064 = {
 			isa = PBXGroup;
 			children = (
+				CFCFE3DB18AB69C3009C8EB9 /* Social */,
+				CFCFE3D818AB656A009C8EB9 /* AWActionSheet.h */,
+				CFCFE3D918AB656A009C8EB9 /* AWActionSheet.m */,
 				CF853DFB18AA450100AA4683 /* CustomIOS7AlertView.h */,
 				CF853DFC18AA450100AA4683 /* CustomIOS7AlertView.m */,
 				4AFE5ED5189A56BC0059AD68 /* Resource */,
@@ -362,6 +386,7 @@
 				CF4239D818A8D005000A1637 /* GameSelectingButton.xib */,
 				4A1B3FB81897DAAB00E36064 /* GameSelectViewController.h */,
 				4A1B3FB91897DAAB00E36064 /* GameSelectViewController.m */,
+				CFCFE3E118AB8684009C8EB9 /* GameSelectViewController.xib */,
 				4AFE5EC6189A18140059AD68 /* CustomGameSelectCell.h */,
 				4AFE5EC7189A18140059AD68 /* CustomGameSelectCell.m */,
 				4AFE5ECB189A1A3F0059AD68 /* CustomGameSelectCell.xib */,
@@ -375,6 +400,14 @@
 				4A2AD82A189E7C95004A3A56 /* SocialShareView.xib */,
 				4A2AD82C189E83A0004A3A56 /* ShareTextView.h */,
 				4A2AD82D189E83A0004A3A56 /* ShareTextView.m */,
+				CF853E0018AB133C00AA4683 /* DialogForBlock.h */,
+				CF853E0118AB133C00AA4683 /* DialogForBlock.m */,
+				CF853DFE18AB103A00AA4683 /* DialogForBlock.xib */,
+				CF853E0318AB58B900AA4683 /* DialogForLastBlock.h */,
+				CF853E0418AB58B900AA4683 /* DialogForLastBlock.m */,
+				CF853E0618AB58ED00AA4683 /* DialogForLastBlock.xib */,
+				CFCFE3E918AB9CA0009C8EB9 /* CustomPageControl.h */,
+				CFCFE3EA18AB9CA0009C8EB9 /* CustomPageControl.m */,
 				4A1B3F821897B45C00E36064 /* iHanzi */,
 				4A1B3F9B1897B45C00E36064 /* iHanziTests */,
 				4A1B3F7B1897B45C00E36064 /* Frameworks */,
@@ -445,6 +478,8 @@
 		4AFE5ED5189A56BC0059AD68 /* Resource */ = {
 			isa = PBXGroup;
 			children = (
+				CFCFE3E318AB970D009C8EB9 /* Default-568h@2x.png */,
+				CFCFE3E518AB970D009C8EB9 /* Default@2x.png */,
 				CF423A4018AA0823000A1637 /* all_leve_seled@2x.png */,
 				CF423A4118AA0823000A1637 /* all_leve_unseled@2x.png */,
 				CF423A4218AA0823000A1637 /* all_leve@2x.png */,
@@ -493,9 +528,6 @@
 				CF4239DB18A8F230000A1637 /* bg2@2x.jpg */,
 				CF4239DC18A8F230000A1637 /* bg3.jpg */,
 				CF4239DD18A8F230000A1637 /* bg4.jpg */,
-				CF4239CE18A8B786000A1637 /* Default@2x.png */,
-				CF4239CF18A8B786000A1637 /* Default-Portrait@2x.png */,
-				CF4239CC18A8B673000A1637 /* Default-568@2x.png */,
 				CF42398618A8B5F0000A1637 /* gift_click@2x.png */,
 				CF42398718A8B5F0000A1637 /* gift_normal@2x.png */,
 				CF42398818A8B5F0000A1637 /* gray_star@2x.png */,
@@ -541,6 +573,24 @@
 				4A2C9CD0189BD72C00CD188D /* TiKu.plist */,
 			);
 			path = Resource;
+			sourceTree = "<group>";
+		};
+		CFCFE3DB18AB69C3009C8EB9 /* Social */ = {
+			isa = PBXGroup;
+			children = (
+				CFCFE3DC18AB69C3009C8EB9 /* WeChat */,
+			);
+			path = Social;
+			sourceTree = "<group>";
+		};
+		CFCFE3DC18AB69C3009C8EB9 /* WeChat */ = {
+			isa = PBXGroup;
+			children = (
+				CFCFE3DD18AB69C3009C8EB9 /* libWeChatSDK.a */,
+				CFCFE3DE18AB69C3009C8EB9 /* WXApi.h */,
+				CFCFE3DF18AB69C3009C8EB9 /* WXApiObject.h */,
+			);
+			path = WeChat;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -625,9 +675,9 @@
 				CF4239A918A8B5F0000A1637 /* gift_click@2x.png in Resources */,
 				CF423A7318AA0824000A1637 /* friend@2x.png in Resources */,
 				CF4239B218A8B5F0000A1637 /* ok@2x.png in Resources */,
-				CF4239CD18A8B673000A1637 /* Default-568@2x.png in Resources */,
 				CF423A7918AA0824000A1637 /* gift_4@2x.png in Resources */,
 				CF423A7418AA0824000A1637 /* game@2x.png in Resources */,
+				CF853E0718AB58ED00AA4683 /* DialogForLastBlock.xib in Resources */,
 				CF4239C018A8B5F0000A1637 /* btn_click_star@2x.png in Resources */,
 				CF423A7E18AA0824000A1637 /* gift@2x.png in Resources */,
 				CF4239B418A8B5F0000A1637 /* regist_click@2x.png in Resources */,
@@ -652,6 +702,7 @@
 				CF423A8118AA0824000A1637 /* index_1@2x.png in Resources */,
 				CF4239AC18A8B5F0000A1637 /* home@2x.png in Resources */,
 				CF423A7218AA0824000A1637 /* btn@2x.png in Resources */,
+				CFCFE3E218AB8684009C8EB9 /* GameSelectViewController.xib in Resources */,
 				4AFE5EEA189B81400059AD68 /* letter_b.png in Resources */,
 				CF4239C518A8B5F0000A1637 /* clock@2x.png in Resources */,
 				4A2C9CD1189BD72C00CD188D /* TiKu.plist in Resources */,
@@ -681,15 +732,14 @@
 				CF4239BD18A8B5F0000A1637 /* back_hover@2x.png in Resources */,
 				CF423A9418AA0824000A1637 /* sina@2x.png in Resources */,
 				CF4239C718A8B5F0000A1637 /* copy_click@2x.png in Resources */,
+				CF853DFF18AB103A00AA4683 /* DialogForBlock.xib in Resources */,
 				CF4239B518A8B5F0000A1637 /* regist_normal@2x.png in Resources */,
-				CF4239D018A8B786000A1637 /* Default@2x.png in Resources */,
 				CF423A7F18AA0824000A1637 /* green@2x.png in Resources */,
 				CF4239B918A8B5F0000A1637 /* unclock@2x.png in Resources */,
 				CF423A6D18AA0824000A1637 /* all_leve_unseled@2x.png in Resources */,
 				CF4239BA18A8B5F0000A1637 /* user@2x.png in Resources */,
 				CF423A7618AA0824000A1637 /* gift_1@2x.png in Resources */,
 				CF4239AB18A8B5F0000A1637 /* gray_star@2x.png in Resources */,
-				CF4239D118A8B786000A1637 /* Default-Portrait@2x.png in Resources */,
 				4AFE5ED4189A4CE10059AD68 /* GamePlayingViewController.xib in Resources */,
 				CF423A6E18AA0824000A1637 /* all_leve@2x.png in Resources */,
 				CF423A7818AA0824000A1637 /* gift_3@2x.png in Resources */,
@@ -704,6 +754,7 @@
 				CF423A8C18AA0824000A1637 /* pink_1@2x.png in Resources */,
 				CF423A9618AA0824000A1637 /* submit@2x.png in Resources */,
 				CF4239B818A8B5F0000A1637 /* ui-btn@2x.png in Resources */,
+				CFCFE3E618AB970D009C8EB9 /* Default-568h@2x.png in Resources */,
 				CF423A8918AA0824000A1637 /* news_content@2x.png in Resources */,
 				CF423A7118AA0824000A1637 /* btn_3@2x.png in Resources */,
 				4AFE5EE9189B81400059AD68 /* letter_a.png in Resources */,
@@ -713,6 +764,7 @@
 				4A2AD82B189E7C95004A3A56 /* SocialShareView.xib in Resources */,
 				CF4239AD18A8B5F0000A1637 /* login_click@2x.png in Resources */,
 				CF4239BF18A8B5F0000A1637 /* btn_click_star_light@2x.png in Resources */,
+				CFCFE3E818AB970D009C8EB9 /* Default@2x.png in Resources */,
 				CF4239B718A8B5F0000A1637 /* title@2x.png in Resources */,
 				CF4239BB18A8B5F0000A1637 /* 我爱汉字美_第一关结束总结@2x.jpg in Resources */,
 				4AFE5EE8189B81400059AD68 /* button_check.png in Resources */,
@@ -741,6 +793,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				CF423A9E18AA2D96000A1637 /* RollingViewController.m in Sources */,
+				CFCFE3DA18AB656A009C8EB9 /* AWActionSheet.m in Sources */,
 				4AFE5EC8189A18140059AD68 /* CustomGameSelectCell.m in Sources */,
 				4AFE5EDD189A82F40059AD68 /* DataManager.m in Sources */,
 				4A2AD82E189E83A0004A3A56 /* ShareTextView.m in Sources */,
@@ -749,6 +802,7 @@
 				CF853DFD18AA450100AA4683 /* CustomIOS7AlertView.m in Sources */,
 				4A1B3FB11897C95D00E36064 /* HomeTabBarController.m in Sources */,
 				4A1B3FB61897D92700E36064 /* UserViewController.m in Sources */,
+				CF853E0218AB133C00AA4683 /* DialogForBlock.m in Sources */,
 				4A2AD829189E7C16004A3A56 /* SocialShareView.m in Sources */,
 				4AFE5ED3189A4CE10059AD68 /* GamePlayingViewController.m in Sources */,
 				4A6AE49A189D200400E96E80 /* NewsViewController.m in Sources */,
@@ -757,6 +811,8 @@
 				4AFE5EDA189A58E80059AD68 /* CustomAlertView.m in Sources */,
 				4A1B3FBA1897DAAB00E36064 /* GameSelectViewController.m in Sources */,
 				4A0172B718994A9D00AA4B13 /* CustomTabViewController.m in Sources */,
+				CF853E0518AB58B900AA4683 /* DialogForLastBlock.m in Sources */,
+				CFCFE3EB18AB9CA0009C8EB9 /* CustomPageControl.m in Sources */,
 				CF423A9A18AA0AD0000A1637 /* UIImage+Resize.m in Sources */,
 				4A6AE497189D19F400E96E80 /* SettingViewController.m in Sources */,
 			);
@@ -833,7 +889,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -867,7 +923,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VALIDATE_PRODUCT = YES;
@@ -880,11 +936,17 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CLANG_ENABLE_OBJC_ARC = NO;
+				CODE_SIGN_IDENTITY = "";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "iHanzi/iHanzi-Prefix.pch";
 				INFOPLIST_FILE = "iHanzi/iHanzi-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					/Users/huang.zhongwei/MyGithub/iHanzi/iHanzi/iHanzi/Social/WeChat,
+				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -895,11 +957,17 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CLANG_ENABLE_OBJC_ARC = NO;
+				CODE_SIGN_IDENTITY = "";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "iHanzi/iHanzi-Prefix.pch";
 				INFOPLIST_FILE = "iHanzi/iHanzi-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					/Users/huang.zhongwei/MyGithub/iHanzi/iHanzi/iHanzi/Social/WeChat,
+				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;

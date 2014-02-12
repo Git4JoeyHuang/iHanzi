@@ -7,7 +7,7 @@
 //
 
 #import "DataManager.h"
-#define TOTAL_NUM 300
+#define TOTAL_NUM 180
 
 @implementation Question
 
@@ -66,6 +66,9 @@ static DataManager* instance=nil;
 {
     if (qIdx<TOTAL_NUM) {
         [answers replaceObjectAtIndex:qIdx withObject:[NSNumber numberWithInt:result]];
+        if (result==1) {
+            self.stars++;
+        }
     }
 }
 

@@ -7,9 +7,11 @@
 //
 
 #import <UIKit/UIKit.h>
-
+#import "CustomPageControl.h"
 @protocol GameSelectDelegate;
 
 @interface GameSelectViewController : UIViewController<GameSelectDelegate,UITableViewDataSource,UITableViewDelegate>
+@property (retain, nonatomic) IBOutlet UIScrollView *scrollView;
+@property (retain, nonatomic) IBOutlet CustomPageControl *pageIndicator;
 
 @end

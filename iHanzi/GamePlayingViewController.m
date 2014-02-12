@@ -11,6 +11,10 @@
 #import "UIImage+Resize.h"
 #import "RollingViewController.h"
 #import "CustomAlertView.h"
+#import "DialogForBlock.h"
+#import "DialogForLastBlock.h"
+#import "AWActionSheet.h"
+#import "WXApi.h"
 //#import "CustomIOS7AlertView.h"
 
 
@@ -21,11 +25,12 @@
 #define questions_per_block 3
 #define last_block 1
 
-@interface GamePlayingViewController ()
+@interface GamePlayingViewController ()<UIActionSheetDelegate,AWActionSheetDelegate>
 {
     int step;
     int stars;
     int selectRow;
+    NSMutableArray* score;
     Question* question;
 }
 @end
@@ -47,6 +52,7 @@
     self = [self initWithNibName:@"GamePlayingViewController" bundle:nil];
     if (self) {
         self.idx = block;
+        score = [[NSMutableArray alloc] initWithCapacity:questions_per_block];
     }
     return self;
 }
@@ -105,7 +111,10 @@
             CustomIOS7AlertView *alertView = [[CustomIOS7AlertView alloc] init];
             
             // Add some custom content to the alert view
-            [alertView setContainerView:[self creatGlobalFinishAlert]];
+            DialogForLastBlock *dialog = [[DialogForLastBlock alloc] loadFromNib];
+            [dialog updateWithScore:[[DataManager sharedInstance] stars]];
+            
+            [alertView setContainerView:dialog];
             
             // Modify the parameters
             //[alertView setButtonTitles:[NSMutableArray arrayWithObjects:@"继续", nil]];
@@ -128,8 +137,12 @@
             CustomIOS7AlertView *alertView = [[CustomIOS7AlertView alloc] init];
             
             // Add some custom content to the alert view
-            [alertView setContainerView:[self createLocalFinishAlert]];
+            DialogForBlock *dialog = [[DialogForBlock alloc] loadFromNib ];
+            [dialog updateWithScore:score];
+//            dialog.container = [[[NSBundle mainBundle] loadNibNamed:@"DialogForBlock" owner:dialog options:nil] objectAtIndex:0];
             
+            //[alertView setContainerView:[self createLocalFinishAlert]];
+            [alertView setContainerView:dialog];
             // Modify the parameters
             //[alertView setButtonTitles:[NSMutableArray arrayWithObjects:@"继续", nil]];
             [alertView setDelegate:self];
@@ -213,21 +226,107 @@
 }
 
 
--(void)alertBtnClicked:(id)sender
+//-(void)alertBtnClicked:(id)sender
+//{
+//    UIButton *button = (UIButton*)sender;
+//    int buttonIndex = button.tag;
+//    if (buttonIndex==0) {
+//        if (self.idx<last_block && self.idx>=[[DataManager sharedInstance] unlockIdx])
+//        {
+//            [[DataManager sharedInstance] setUnlockIdx:self.idx+1];
+//        }
+//        [self.navigationController popViewControllerAnimated:YES];
+//    }else if(buttonIndex==1){
+//        //进入抽奖页面
+//        RollingViewController *rollingController = [[RollingViewController alloc] init];
+//        [self.navigationController pushViewController:rollingController animated:YES];
+//        [rollingController release];
+//    }else {
+//        //进入分享页面
+//        [self showAWSheet];
+//    }
+//}
+
+- (void)showAWSheet
 {
-    UIButton *button = (UIButton*)sender;
-    int buttonIndex = button.tag;
-    if (buttonIndex==0) {
-        if (self.idx<last_block && self.idx>=[[DataManager sharedInstance] unlockIdx])
-        {
-            [[DataManager sharedInstance] setUnlockIdx:self.idx+1];
-        }
-        [self.navigationController popViewControllerAnimated:YES];
-    }else{
-        //进入抽奖页面
-        RollingViewController *rollingController = [[RollingViewController alloc] init];
-        [self.navigationController pushViewController:rollingController animated:YES];
-        [rollingController release];
+    AWActionSheet *sheet = [[AWActionSheet alloc] initwithIconSheetDelegate:self ItemCount:[self numberOfItemsInActionSheet]];
+    [sheet showInView:self.view];
+    [sheet release];
+}
+
+- (void) sendImageContent
+{
+    WXMediaMessage *message = [WXMediaMessage message];
+    [message setThumbImage:[UIImage imageNamed:@"logo.png"]];
+    message.title = @"我在玩有趣的汉字闯关游戏";
+    message.description = @"【我爱汉字美】是上海教育电视台为推广汉字文化而制作的App游戏。3月22日起，每周六、日20：25分播出同名语言类大型季播节目。";
+    
+    WXWebpageObject *ext = [WXWebpageObject object];
+    ext.webpageUrl = @"http://tech.qq.com/zt2012/tmtdecode/252.htm";
+    
+    message.mediaObject = ext;
+ 
+    SendMessageToWXReq* req = [[[SendMessageToWXReq alloc] init]autorelease];
+    req.bText = NO;
+    req.message = message;
+    req.scene = WXSceneSession;
+    
+    [WXApi sendReq:req];
+}
+
+#pragma mark AWActionSheetDelegate
+-(int)numberOfItemsInActionSheet
+{
+    return 3;
+    
+}
+
+-(void)DidTapOnItemAtIndex:(NSInteger)index
+{
+    switch (index) {
+            
+        default:
+            if ([WXApi isWXAppInstalled]) {
+                [self sendImageContent];
+            }
+            break;
+    }
+}
+
+-(AWActionSheetCell *)cellForActionAtIndex:(NSInteger)index
+{
+    AWActionSheetCell* cell = [[[AWActionSheetCell alloc] init] autorelease];
+    
+    switch (index) {
+        case 0:
+            [cell.iconView setImage:[UIImage imageNamed:@"sina.png"] ];
+            break;
+        case 1:
+            [cell.iconView setImage:[UIImage imageNamed:@"qq.png"] ];
+            break;
+        case 2:
+            [cell.iconView setImage:[UIImage imageNamed:@"wexin.png"] ];
+            break;
+        case 3:
+            [cell.iconView setImage:[UIImage imageNamed:@"friend.png"] ];
+            break;
+        default:
+            break;
+    }
+//    [[cell iconView] setBackgroundColor:
+//     [UIColor colorWithRed:rand()%255/255.0f
+//                     green:rand()%255/255.0f
+//                      blue:rand()%255/255.0f
+//                     alpha:1]];
+//    [[cell titleLabel] setText:[NSString stringWithFormat:@"item %d",index]];
+    cell.index = index;
+    return cell;
+}
+
+-(void)shareBtnClicked:(id)sender
+{
+    if ([WXApi isWXAppInstalled]) {
+        [self sendImageContent];
     }
 }
 
@@ -255,6 +354,24 @@
     temporaryBarButtonItem.style = UIBarButtonItemStylePlain;
     
     self.navigationItem.leftBarButtonItem = temporaryBarButtonItem;
+    
+    [temporaryBarButtonItem release];
+    
+    UIButton *shareButton = [UIButton buttonWithType:UIButtonTypeCustom];
+    
+    shareButton.frame = CGRectMake(0.0, 0.0, 26.0, 23.0);
+    
+    [shareButton setImage:[UIImage imageNamed:@"back.png"] forState:UIControlStateNormal];
+    
+    [shareButton setImage:[UIImage imageNamed:@"back_hover.png"] forState:UIControlStateSelected];
+    
+    [shareButton addTarget:self action:@selector(showAWSheet) forControlEvents:UIControlEventTouchUpInside];
+       
+    temporaryBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:shareButton];
+    
+    temporaryBarButtonItem.style = UIBarButtonItemStylePlain;
+    
+    self.navigationItem.rightBarButtonItem = temporaryBarButtonItem;
     
     [temporaryBarButtonItem release];
     
@@ -380,6 +497,7 @@
 }
 
 #pragma mark UIAlertViewDelegate
+/*
 -(void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex
 {
 //    if (step == questions_per_block) {
@@ -408,15 +526,18 @@
             [[DataManager sharedInstance] setUnlockIdx:self.idx+1];
         }
         [self.navigationController popViewControllerAnimated:YES];
-    }else{
+    }else if(buttonIndex == 1){
         //进入抽奖页面
         RollingViewController *rollingController = [[RollingViewController alloc] init];
         [self.navigationController pushViewController:rollingController animated:YES];
         [rollingController release];
+    }else {
+        [self showAWSheet];
     }
     
     
 }
+ */
 
 #pragma mark UITableViewDataSource
 
@@ -550,6 +671,8 @@
         int qIdx = [[DataManager sharedInstance] blockIdx]*questions_per_block+step;
         [[DataManager sharedInstance] answerQuestion:qIdx Result:1];
         
+        [score addObject:[NSNumber numberWithInt:1]];
+        
         stars++;
         
     }else {
@@ -566,6 +689,8 @@
         
         int qIdx = [[DataManager sharedInstance] blockIdx]*questions_per_block+step;
         [[DataManager sharedInstance] answerQuestion:qIdx Result:2];
+        
+        [score addObject:[NSNumber numberWithInt:2]];
     }
     [tableView setUserInteractionEnabled:NO];
 }
@@ -580,11 +705,14 @@
             [[DataManager sharedInstance] setUnlockIdx:self.idx+1];
         }
         [self.navigationController popViewControllerAnimated:YES];
-    }else{
+    }
+    else if(buttonIndex == 1){
         //进入抽奖页面
         RollingViewController *rollingController = [[RollingViewController alloc] init];
         [self.navigationController pushViewController:rollingController animated:YES];
         [rollingController release];
+    }else {
+        [self showAWSheet];
     }
 }
 
